@@ -24,10 +24,3 @@ export const Row = styled.div`
     align-items: center;
     flex-wrap: wrap;
 `;
-
-export const Column = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-`;
