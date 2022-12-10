@@ -25,7 +25,10 @@ function App() {
       return;
       
     }else if(/(\+)|(-)|(x)|(\/)/.test(number)){
-      if(/(\+)|(-)|(x)|(\/)/.test(currentNumber)) return;
+      if((/(\+)|(-)|(x)|(\/)/.test(currentNumber)) || currentNumber.length === 1) return;
+    }else if(number === "<"){
+      if(currentNumber?.length) setCurrentNumber(prev => prev.substring(0, prev.length - 1));
+      return;
     }
     setCurrentNumber(prev => (prev === "0" ? "" : prev) + number);
   }
@@ -55,8 +58,9 @@ function App() {
       <Content>
         <Input value={currentNumber}/>
         <Row>
-          {["x","/",".","C","7","8","9","-","4","5","6","+","1","2","3","="]
+          {["x","/","C","<","7","8","9","-","4","5","6","+","1","2","3","."]
             .map(e => <Button label={e} onClick={() => addNumber(e)}/>)}
+          {["0","="].map(e => <Button size="M" label={e} onClick={() => addNumber(e)}/>)}
         </Row>
       </Content>
     </Container>
